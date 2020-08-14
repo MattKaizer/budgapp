@@ -1,25 +1,48 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Fragment, useState } from "react";
+import Question from "./components/Question";
+import Formulario from "./components/Formulario";
+import Listado from "./components/Listado";
+import ControlPresupuesto from "./components/ControlPresupuesto";
 
 function App() {
+  //definimos states
+  const [presupuesto, setPresupuesto] = useState(0);
+  const [resto, setResto] = useState(0);
+  const [mostrarQuestion, setMostrarQuestion] = useState(true);
+  const [listaGastos, setListaGastos] = useState([]);
+
+  //lista de gastos
+  const agregarNuevoGasto = (gasto) => {
+    setListaGastos([...listaGastos, gasto]);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+      <div className="container isFullhd">
+        <main>
+          <h1>BudgAPP</h1>
+          <div className="contenido-principal contenido">
+            {mostrarQuestion ? (
+              <Question
+                setPresupuesto={setPresupuesto}
+                setResto={setResto}
+                setMostrarQuestion={setMostrarQuestion}
+              />
+            ) : (
+              <article className="columns">
+                <section className="section column">
+                  <Formulario agregarNuevoGasto={agregarNuevoGasto} />
+                </section>
+                <section className="section column">
+                  <Listado listaGastos={listaGastos} />
+                  <ControlPresupuesto presupuesto={presupuesto} resto={resto} />
+                </section>
+              </article>
+            )}
+          </div>
+        </main>
+      </div>
+    </Fragment>
   );
 }
 

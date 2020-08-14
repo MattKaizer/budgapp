@@ -1,3 +1,24 @@
+# App for Budget control
+
+[link-heroku-preview](https://loving-brahmagupta-0b94e1.netlify.app)
+
+### Simple React App
+
+## Task Description
+
+Simple app build with reactJS, working with hooks.
+
+#### Enum Tech used
+
+* HTML5
+* CSS3
+* JS
+* ReacJS
+* Bulma
+* ShortId
+
+<hr>
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

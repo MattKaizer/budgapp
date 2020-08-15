@@ -17,17 +17,16 @@ function App() {
   useEffect(() => {
     if (crearGasto) {
       //set presupuesto
-      setListaGastos([...listaGastos, gasto])
-      
-      //restante
-      const presupuestoRestante = resto - gasto.cantidadGasto
-      setResto(presupuestoRestante)
-      
-      //reset 
-      setCrearGasto(false)
-    }
-  }, [gasto, crearGasto, resto, listaGastos])
+      setListaGastos([...listaGastos, gasto]);
 
+      //restante
+      const presupuestoRestante = resto - gasto.cantidadGasto;
+      setResto(presupuestoRestante);
+
+      //reset
+      setCrearGasto(false);
+    }
+  }, [gasto, crearGasto, resto, listaGastos]);
 
   //lista de gastos
   // const agregarNuevoGasto = (gasto) => {
@@ -49,9 +48,9 @@ function App() {
             ) : (
               <article className="columns">
                 <section className="section column">
-                  <Formulario 
-                  setGasto={setGasto}
-                  setCrearGasto={setCrearGasto}
+                  <Formulario
+                    setGasto={setGasto}
+                    setCrearGasto={setCrearGasto}
                   />
                 </section>
                 <section className="section column">

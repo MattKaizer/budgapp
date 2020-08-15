@@ -1,39 +1,39 @@
 import React, { Fragment, useState } from "react";
 import Error from "./Error";
-import shortid from 'shortid';
+import shortid from "shortid";
+import PropTypes from "prop-types";
 
-const Formulario = ({setGasto, setCrearGasto}) => {
+const Formulario = ({ setGasto, setCrearGasto }) => {
   //defino states
   const [nombre, setNombre] = useState("");
-  const [cantidadGasto, setCantidadGasto] = useState(0)
+  const [cantidadGasto, setCantidadGasto] = useState(0);
   const [error, setError] = useState(false);
 
   //agregar gasto
   const agregarGasto = (e) => {
     e.preventDefault();
 
-
     //validar
     if (cantidadGasto < 1 || isNaN(cantidadGasto) || nombre.trim() === "") {
       setError(true);
       return;
     }
-    setError(false)
+    setError(false);
     //post validar - detalle gasto
     const gasto = {
-        nombre,
-        cantidadGasto,
-        id: shortid.generate()
-    }
+      nombre,
+      cantidadGasto,
+      id: shortid.generate(),
+    };
 
     //pasar al componente principal
-    setGasto(gasto)
-    setCrearGasto(true)
+    setGasto(gasto);
+    setCrearGasto(true);
 
     //reset formulario
-    setNombre('')
-    setCantidadGasto(0)
-};
+    setNombre("");
+    setCantidadGasto(0);
+  };
 
   return (
     <Fragment>
@@ -62,7 +62,7 @@ const Formulario = ({setGasto, setCrearGasto}) => {
               placeholder="200, 100..."
               step="any"
               value={cantidadGasto}
-              onChange={e => parseFloat(setCantidadGasto(e.target.value))}
+              onChange={(e) => parseFloat(setCantidadGasto(e.target.value))}
             />
             <span className="icon is-small is-left">
               <i className="fas fa-euro-sign"></i>
@@ -77,6 +77,11 @@ const Formulario = ({setGasto, setCrearGasto}) => {
       </form>
     </Fragment>
   );
+};
+
+Formulario.prototype = {
+  setGasto: PropTypes.func.isRequired,
+  setCrearGasto: PropTypes.func.isRequired,
 };
 
 export default Formulario;

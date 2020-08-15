@@ -1,7 +1,8 @@
 import React, { Fragment, useState } from "react";
-import Error from './Error';
+import Error from "./Error";
+import PropTypes from "prop-types";
 
-const Question = ({setPresupuesto, setResto, setMostrarQuestion}) => {
+const Question = ({ setPresupuesto, setResto, setMostrarQuestion }) => {
   //defino los states
   const [cantidad, setCantidad] = useState(0);
   const [error, setError] = useState(false);
@@ -10,21 +11,21 @@ const Question = ({setPresupuesto, setResto, setMostrarQuestion}) => {
   const agregarPresupuesto = (e) => {
     e.preventDefault();
     //validar
-    if(cantidad < 1 || isNaN( cantidad )) {
-        setError(true);
-        return;
-    } 
+    if (cantidad < 1 || isNaN(cantidad)) {
+      setError(true);
+      return;
+    }
     //post validar
-    setError(false)
-    setPresupuesto(cantidad)
-    setResto(cantidad)
-    setMostrarQuestion(false)
+    setError(false);
+    setPresupuesto(cantidad);
+    setResto(cantidad);
+    setMostrarQuestion(false);
   };
 
   return (
     <Fragment>
       <h2>Coloca tu Presupuesto</h2>
-      { error ? <Error mensaje="El presupuesto es incorrecto" /> : null}
+      {error ? <Error mensaje="El presupuesto es incorrecto" /> : null}
       <form onSubmit={agregarPresupuesto}>
         <div className="field">
           <p className="control has-icons-left">
@@ -33,8 +34,8 @@ const Question = ({setPresupuesto, setResto, setMostrarQuestion}) => {
               className="input is-fullwidth is-primary"
               placeholder="Coloca tu presupuesto"
               step="any"
-              autofocus='true'
-              onChange={ e => {
+              autoFocus
+              onChange={(e) => {
                 setCantidad(parseFloat(e.target.value));
               }}
             />
@@ -52,6 +53,12 @@ const Question = ({setPresupuesto, setResto, setMostrarQuestion}) => {
       </form>
     </Fragment>
   );
+};
+
+Question.prototype = {
+  setPresupuesto: PropTypes.func.isRequired,
+  setResto: PropTypes.func.isRequired,
+  setMostrarQuestion: PropTypes.func.isRequired,
 };
 
 export default Question;

@@ -1,6 +1,6 @@
 # App for Budget control
 
-[link-heroku-preview](https://loving-brahmagupta-0b94e1.netlify.app)
+[link-netlify-preview](https://gracious-jennings-14385b.netlify.app)
 
 ### Simple React App
 

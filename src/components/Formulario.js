@@ -2,7 +2,7 @@ import React, { Fragment, useState } from "react";
 import Error from "./Error";
 import shortid from 'shortid';
 
-const Formulario = ({agregarNuevoGasto}) => {
+const Formulario = ({setGasto, setCrearGasto}) => {
   //defino states
   const [nombre, setNombre] = useState("");
   const [cantidadGasto, setCantidadGasto] = useState(0)
@@ -11,6 +11,7 @@ const Formulario = ({agregarNuevoGasto}) => {
   //agregar gasto
   const agregarGasto = (e) => {
     e.preventDefault();
+
 
     //validar
     if (cantidadGasto < 1 || isNaN(cantidadGasto) || nombre.trim() === "") {
@@ -26,7 +27,8 @@ const Formulario = ({agregarNuevoGasto}) => {
     }
 
     //pasar al componente principal
-    agregarNuevoGasto(gasto)
+    setGasto(gasto)
+    setCrearGasto(true)
 
     //reset formulario
     setNombre('')
@@ -46,6 +48,7 @@ const Formulario = ({agregarNuevoGasto}) => {
               className="input is-fullwidth"
               placeholder="Transporte, Alimentos varios..."
               value={nombre}
+              autoFocus
               onChange={(e) => setNombre(e.target.value)}
             />
           </p>

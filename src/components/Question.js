@@ -33,6 +33,7 @@ const Question = ({setPresupuesto, setResto, setMostrarQuestion}) => {
               className="input is-fullwidth is-primary"
               placeholder="Coloca tu presupuesto"
               step="any"
+              autofocus='true'
               onChange={ e => {
                 setCantidad(parseFloat(e.target.value));
               }}
